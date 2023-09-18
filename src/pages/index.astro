@@ -4,16 +4,17 @@ import { getBlogs } from "../libs/microcms";
 
 //MicroCMSの呼び出し
 const response = await getBlogs({ fields: ["id", "title"] });
+const title = "Astro Blog"
 ---
 
-<Layout title="Astro Blog">
+<Layout title="Astro Test Blog">
   <main>
-    <h1>Astro Blog</h1>
+    <h1>{title}</h1>
     <ul>
       {
         response.contents.map((blog: any) => (
           <li>
-            <a href={blog.id}>📝{blog.title}</a>
+            <a href={blog.id}>{blog.title}</a>
           </li>
         ))
       }
@@ -50,11 +51,11 @@ const response = await getBlogs({ fields: ["id", "title"] });
   ul {
     padding: 0;
     list-style-type: none;
+	li {
+	  margin-bottom: 10px;
+	}
   }
 
-  li {
-    margin-bottom: 10px;
-  }
 
   a {
     color: #6884bd;
